@@ -5,7 +5,7 @@ View (vgsales)
 #to know what years are contained in a specific column
 unique(vgsales$Year)
 
-#1. learning dply verbs : filter() note: subsets data based on provided conditions
+#1. learning dplyr verbs : filter() note: subsets data based on provided conditions
 vgsales %>% 
   filter(Year == 2003, Publisher == 'Nintendo')
 
