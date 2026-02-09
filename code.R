@@ -32,10 +32,18 @@ vgsales %>%
   filter (Year == 2003, Publisher == "Nintendo") %>%
   arrange (desc(Global_Sales2))
 
+
+#the summarize () verb - used to turn or summarize many rows into one
+vgsales %>%
+  filter (Year == 2003) %>%
+  summarize (meanGlobalSales = mean(Global_Sales), 
+             totalGlobalSales = sum(Global_Sales))
+
+
 #Data Visualisation with ggplot2
 library (ggplot2)
 vgsales_2003 <- vgsales%>%
-  filter (Year == 2003, Global_Sales > 1.5)
+  filter (Year == 2003, Global_Sales > 3.8)
 
 #creating a scatterplot to visualize the relationship between Publishers and their Global Sales in 2003
 ggplot(vgsales_2003, aes(x=Publisher, y=Global_Sales)) + geom_point()
@@ -45,3 +53,8 @@ ggplot(vgsales_2003, aes(x=Publisher, y=Global_Sales, color = Genre)) + geom_poi
 
 #adding size aesthetic to the plot
 ggplot(vgsales_2003, aes(x=Publisher, y=Global_Sales, color = Genre, size= EU_Sales)) + geom_point()
+
+#faceting 
+ggplot(vgsales_2003, aes(x=Publisher, y=Global_Sales, color = Genre, size= EU_Sales)) + geom_point() + facet_wrap(~Platform)
+
+
