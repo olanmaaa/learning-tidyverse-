@@ -9,7 +9,7 @@ unique(vgsales$Year)
 vgsales %>% 
   filter(Year == 2003, Publisher == 'Nintendo')
 
-#2. arrange () note: sorts data by ascending order 9default) or descending order (use desc() around the variable being sorted by)
+#2. arrange () note: sorts data by ascending order (default) or descending order (use desc() around the variable being sorted by)
 
 vgsales %>% 
   arrange (Global_Sales) 
@@ -30,7 +30,7 @@ vgsales %>%
 vgsales %>%
   mutate (Global_Sales2 = Global_Sales * 100)%>%
   filter (Year == 2003, Publisher == "Nintendo") %>%
-  arrange 
+  arrange (desc(Global_Sales2))
 
 #Data Visualisation with ggplot2
 library (ggplot2)
