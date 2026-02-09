@@ -39,8 +39,22 @@ vgsales %>%
   summarize (meanGlobalSales = mean(Global_Sales), 
              totalGlobalSales = sum(Global_Sales))
 
+#the group_by () verb - used to get subsets in groups
 
-#Data Visualisation with ggplot2
+vgsales %>% 
+  group_by (Year)%>%
+  summarise(meanGlobalSales = mean(Global_Sales), 
+            totalGlobalSales = sum(Global_Sales))
+
+# using summarize () to find the name of the game with the max Europe sales in 2003
+vgsales %>%
+  filter (Year == 2003)%>%
+  group_by (Publisher)%>%
+  summarize(max(Name), max(EU_Sales))
+
+
+
+#Data Visualization with ggplot2
 library (ggplot2)
 vgsales_2003 <- vgsales%>%
   filter (Year == 2003, Global_Sales > 3.8)
