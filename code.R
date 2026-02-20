@@ -71,4 +71,21 @@ ggplot(vgsales_2003, aes(x=Publisher, y=Global_Sales, color = Genre, size= EU_Sa
 #faceting 
 ggplot(vgsales_2003, aes(x=Publisher, y=Global_Sales, color = Genre, size= EU_Sales)) + geom_point() + facet_wrap(~Platform)
 
+#visualizing summarized data
+#1. Best Selling Game Globally per Genre in 2003(scatterplot)
+by_genre <- vgsales %>%
+  filter (Year == 2003)%>%
+  group_by (Genre)%>%
+  summarize(gameName= max(Name),globalSales= max(Global_Sales))
 
+ggplot(by_genre, aes(x=Genre, y=globalSales, color = gameName)) + geom_point () + labs(title='Best Selling Game Globally per Genre in 2003',
+              caption= 'Data source: Kaggle(vgsales)')
+
+#.2. Total Sales per Genre in 2010(boxplot)
+by_genre <- vgsales %>%
+  filter (Year == 2010)%>%
+  group_by (Genre)%>%
+  summarize(gameName= max(Name),Global_Sales)
+
+ggplot(by_genre, aes(x=Genre, y=Global_Sales)) + geom_boxplot () + labs(title='Total Sales per Genre in 2010',
+                                                                                       caption= 'Data source: Kaggle(vgsales)') + scale_y_log10()
