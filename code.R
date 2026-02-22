@@ -88,7 +88,7 @@ by_genre <- vgsales %>%
   summarize(gameName= max(Name),Global_Sales)
 
 ggplot(by_genre, aes(x=Genre, y=Global_Sales)) + geom_boxplot () + labs(title='Total Sales per Genre in 2010',
-                                                                                       caption= 'Data source: Kaggle(vgsales)') + scale_y_log10()
+                                                                                       caption= 'Data source: Kaggle(vgsales)')
 #3. Individual Sales per Publisher in North American (2002)- histogram
  by_platform <- vgsales %>%
    filter (Year==2002)%>%
