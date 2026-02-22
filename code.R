@@ -89,3 +89,27 @@ by_genre <- vgsales %>%
 
 ggplot(by_genre, aes(x=Genre, y=Global_Sales)) + geom_boxplot () + labs(title='Total Sales per Genre in 2010',
                                                                                        caption= 'Data source: Kaggle(vgsales)') + scale_y_log10()
+#3. Individual Sales per Publisher in North American (2002)- histogram
+ by_platform <- vgsales %>%
+   filter (Year==2002)%>%
+   group_by (Platform) %>%
+   summarize (NaSales= NA_Sales*10)
+ 
+ ggplot(by_platform, aes(x=NaSales)) + geom_histogram(binwidth = 2)
+ 
+#4. 
+ 
+ 
+ 
+ 
+ #----- PROBABILITY-----
+ vgsales %>%
+   sample_n(1)
+ #setting a seed
+ set.seed(21)
+ vgsales %>%
+   sample_n(1)
+ #sampling with or without replacement
+ vgsales %>%
+   sample_n (2,replace=TRUE)
+ 
